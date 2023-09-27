@@ -1,0 +1,119 @@
+/*----------------------------------------*/
+/*  13. Instagram CSS
+/*----------------------------------------*/
+
+/* Instagram Carousel */
+.instafeed-carousel {
+    & .slick-list {
+        margin-right: -7.5px !important;
+        margin-left: -7.5px !important;
+
+        & .slick-slide {
+            display: flex;
+
+            padding-right: 7.5px;
+            padding-left: 7.5px;
+            & > * {
+                display: flex;
+
+                padding: 0 !important;
+            }
+        }
+    }
+    @media #{$large-mobile} {
+        overflow: hidden;
+        & .slick-slider {
+            margin-right: -10px;
+            margin-left: -10px;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+    }
+}
+
+/* Gallery Grid */
+.instafeed-grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 100%;
+
+    & .instafeed-item {
+        display: block;
+        flex: 1 0 25%;
+
+        max-width: 25%;
+        @media #{$tablet-device} {
+            flex: 1 0 33.3333%;
+
+            max-width: 33.3333%;
+        }
+        @media #{$large-mobile} {
+            flex: 1 0 50%;
+
+            max-width: 50%;
+        }
+        @media #{$extra-small-mobile} {
+            flex: 1 0 100%;
+
+            max-width: 100%;
+        }
+    }
+}
+/* Instafeed Item */
+.instafeed-item {
+    position: relative;
+
+    display: block;
+    &::before {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        content: "";
+        transition: $transition;
+
+        opacity: 0;
+        background-color: $black;
+    }
+    & img {
+        width: 100%;
+    }
+    & i {
+        font-size: 20px;
+
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 30px;
+        height: 30px;
+        margin-top: -15px;
+        margin-left: -15px;
+
+        transition: $transition;
+        transform: scale(1.5);
+
+        opacity: 0;
+        color: $white;
+    }
+    &:hover {
+        &::before {
+            opacity: 0.5;
+        }
+        & i {
+            transform: scale(1);
+
+            opacity: 1;
+        }
+    }
+}
